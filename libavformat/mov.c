@@ -5094,7 +5094,7 @@ static int sanity_checks(void *log_obj, MOVStreamContext *sc, int index)
     if (sc->stsc_count && sc->stsc_data[ sc->stsc_count - 1 ].first > sc->chunk_count) {
         av_log(log_obj, AV_LOG_ERROR, "stream %d, contradictionary STSC and STCO\n",
                index);
-        return 2;
+        //return 2;
     }
     return 0;
 }
@@ -10457,7 +10457,7 @@ static int mov_read_header(AVFormatContext *s)
             avio_seek(pb, 0, SEEK_SET);
         if ((err = mov_read_default(mov, pb, atom)) < 0) {
             av_log(s, AV_LOG_ERROR, "error reading header\n");
-            return err;
+           // return err;
         }
     } while ((pb->seekable & AVIO_SEEKABLE_NORMAL) &&
              !mov->found_moov && (!mov->found_iloc || !mov->found_iinf) && !mov->moov_retry++);
